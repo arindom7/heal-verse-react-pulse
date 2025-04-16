@@ -2,7 +2,7 @@
 import { useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import anime from 'animejs';
+import anime from 'animejs/lib/anime.es.js';
 
 export const CallToAction = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
