@@ -1,12 +1,12 @@
 
 import { useRef, useEffect } from 'react';
-import anime from 'animejs';
+import * as anime from 'animejs';
 
 export const PrescriptionHeader = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    anime({
+    anime.default({
       targets: headerRef.current,
       opacity: [0, 1],
       translateY: [30, 0],

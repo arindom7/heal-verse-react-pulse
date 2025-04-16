@@ -1,8 +1,7 @@
-
 import { useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import anime from 'animejs';
+import * as anime from 'animejs';
 
 export const CallToAction = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -11,7 +10,7 @@ export const CallToAction = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          anime({
+          anime.default({
             targets: ctaRef.current,
             opacity: [0, 1],
             scale: [0.95, 1],

@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { AlertOctagon, AlertCircle, CheckCircle, Info, ExternalLink, Pill } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import anime from 'animejs';
+import * as anime from 'animejs';
 
 export interface AnalysisResult {
   medications: Medication[];
@@ -34,7 +34,7 @@ export const PrescriptionResult = ({ result }: PrescriptionResultProps) => {
   
   useEffect(() => {
     if (result && resultRef.current) {
-      anime({
+      anime.default({
         targets: resultRef.current,
         opacity: [0, 1],
         translateY: [20, 0],

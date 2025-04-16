@@ -1,4 +1,3 @@
-
 import { ArrowRight, Calendar, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAnimeEffect } from "@/hooks/useAnimeEffect";
