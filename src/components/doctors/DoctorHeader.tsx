@@ -1,6 +1,6 @@
 
 import { useRef, useEffect } from 'react';
-import * as anime from 'animejs';
+import anime from 'animejs/lib/anime.es.js';
 
 export const DoctorHeader = () => {
   const headerRef = useRef<HTMLDivElement>(null);

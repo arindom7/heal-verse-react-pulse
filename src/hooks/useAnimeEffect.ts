@@ -1,6 +1,6 @@
 
 import { useRef, useEffect } from 'react';
-import * as anime from 'animejs';
+import anime from 'animejs/lib/anime.es.js';
 
 type AnimeParams = Parameters<typeof anime>[0];
 
