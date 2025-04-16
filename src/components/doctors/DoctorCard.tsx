@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Star, Clock, ThumbsUp, Award } from "lucide-react";
-import { useAnimeEffect } from "@/hooks/useAnimeEffect";
+import { motion } from "framer-motion";
 
 export interface Doctor {
   id: string;
@@ -25,18 +25,12 @@ interface DoctorCardProps {
 export const DoctorCard = ({ doctor, index }: DoctorCardProps) => {
   const [expanded, setExpanded] = useState(false);
   
-  const cardRef = useAnimeEffect<HTMLDivElement>({
-    opacity: [0, 1],
-    translateY: [30, 0],
-    duration: 800,
-    delay: 100 * index,
-    easing: 'easeOutQuad'
-  });
-
   return (
-    <div 
-      ref={cardRef}
-      className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 card-hover opacity-0"
+    <motion.div 
+      className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 card-hover"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.1 * index, ease: "easeOut" }}
     >
       <div className="p-6">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
@@ -104,6 +98,6 @@ export const DoctorCard = ({ doctor, index }: DoctorCardProps) => {
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

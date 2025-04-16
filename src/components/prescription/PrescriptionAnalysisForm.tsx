@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,7 +11,7 @@ import {
   FileText, 
   Camera
 } from "lucide-react";
-import { useAnimeEffect } from "@/hooks/useAnimeEffect";
+import { motion } from "framer-motion";
 
 interface PrescriptionAnalysisFormProps {
   onSubmit: (query: string) => Promise<void>;
@@ -21,14 +22,6 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
   const [query, setQuery] = useState("");
   const [selectedTab, setSelectedTab] = useState<"text" | "upload" | "camera">("text");
   
-  const formRef = useAnimeEffect<HTMLDivElement>({
-    opacity: [0, 1],
-    translateY: [20, 0],
-    duration: 800,
-    delay: 300,
-    easing: 'easeOutQuad'
-  });
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
@@ -87,9 +80,11 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
   };
 
   return (
-    <div 
-      ref={formRef}
-      className="bg-white rounded-lg shadow-md p-6 opacity-0"
+    <motion.div 
+      className="bg-white rounded-lg shadow-md p-6"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
     >
       <form onSubmit={handleSubmit}>
         <div className="flex gap-2 border-b mb-6">
@@ -150,6 +145,6 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
           </Button>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 };

@@ -1,18 +1,12 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useAnimeEffect } from "@/hooks/useAnimeEffect";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navRef = useAnimeEffect<HTMLElement>({
-    opacity: [0, 1],
-    translateY: [-10, 0],
-    duration: 1000,
-    easing: 'easeOutExpo',
-    delay: 300
-  });
 
   const links = [
     { name: "Home", href: "/" },
@@ -23,9 +17,11 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav 
-      ref={navRef}
+    <motion.nav 
       className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm"
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
@@ -81,6 +77,6 @@ export const Navbar = () => {
           </div>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 };

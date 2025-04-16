@@ -1,9 +1,8 @@
-
 import { useState, useEffect } from "react";
 import { DoctorCard, Doctor } from "./DoctorCard";
 import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
-import { useAnimeEffect } from "@/hooks/useAnimeEffect";
+import { motion } from "framer-motion";
 
 // Mock doctor data
 const mockDoctors: Doctor[] = [
@@ -100,13 +99,6 @@ export const DoctorList = ({ filters }: DoctorListProps) => {
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(4);
   
-  const loadMoreRef = useAnimeEffect<HTMLDivElement>({
-    opacity: [0, 1],
-    duration: 800,
-    delay: 800,
-    easing: 'easeOutQuad'
-  });
-
   useEffect(() => {
     // Simulate API call with delay
     setLoading(true);
@@ -175,7 +167,12 @@ export const DoctorList = ({ filters }: DoctorListProps) => {
       </div>
       
       {visibleCount < doctors.length && (
-        <div ref={loadMoreRef} className="mt-8 text-center opacity-0">
+        <motion.div 
+          className="mt-8 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
           <Button
             variant="outline"
             onClick={loadMore}
@@ -183,7 +180,7 @@ export const DoctorList = ({ filters }: DoctorListProps) => {
           >
             Load More
           </Button>
-        </div>
+        </motion.div>
       )}
     </div>
   );

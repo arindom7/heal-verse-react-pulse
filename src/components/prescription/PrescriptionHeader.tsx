@@ -1,24 +1,13 @@
 
-import { useRef, useEffect } from 'react';
-import * as anime from 'animejs';
+import { motion } from 'framer-motion';
 
 export const PrescriptionHeader = () => {
-  const headerRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    anime.default({
-      targets: headerRef.current,
-      opacity: [0, 1],
-      translateY: [30, 0],
-      duration: 1000,
-      easing: 'easeOutExpo'
-    });
-  }, []);
-
   return (
-    <div 
-      ref={headerRef}
-      className="bg-gradient-to-r from-medical-secondary to-medical-accent py-16 md:py-20 opacity-0"
+    <motion.div 
+      className="bg-gradient-to-r from-medical-secondary to-medical-accent py-16 md:py-20"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -28,6 +17,6 @@ export const PrescriptionHeader = () => {
           Get detailed insights about your medications, potential interactions, and personalized health information.
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };

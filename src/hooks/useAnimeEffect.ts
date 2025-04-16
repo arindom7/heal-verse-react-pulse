@@ -1,24 +1,12 @@
 
-import { useRef, useEffect } from 'react';
-import * as anime from 'animejs';
+import { useRef } from 'react';
+import { MotionValue, VariantLabels, AnimationControls } from 'framer-motion';
 
-type AnimeParams = Parameters<typeof anime.default>[0];
-
-export function useAnimeEffect<T extends HTMLElement>(
-  animeParams: Omit<AnimeParams, 'targets'>,
-  dependencies: any[] = []
-) {
+/**
+ * A custom hook to create a ref for use with Framer Motion animations
+ * This serves as a bridge to migrate from anime.js to framer-motion
+ */
+export function useAnimeEffect<T extends HTMLElement>() {
   const elementRef = useRef<T>(null);
-
-  useEffect(() => {
-    if (elementRef.current) {
-      anime.default({
-        targets: elementRef.current,
-        ...animeParams,
-      });
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [elementRef, ...dependencies]);
-
   return elementRef;
 }

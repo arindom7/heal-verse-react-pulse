@@ -1,4 +1,5 @@
-import { useRef, useEffect } from 'react';
+
+import { useRef } from 'react';
 import { 
   Stethoscope, 
   FileText, 
@@ -7,7 +8,7 @@ import {
   Award, 
   MessageCircle 
 } from "lucide-react";
-import * as anime from 'animejs';
+import { motion, useInView } from 'framer-motion';
 
 interface FeatureProps {
   icon: React.ReactNode;
@@ -17,71 +18,29 @@ interface FeatureProps {
 }
 
 const Feature = ({ icon, title, description, delay }: FeatureProps) => {
-  const featureRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.1 });
   
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          anime.default({
-            targets: featureRef.current,
-            opacity: [0, 1],
-            translateY: [20, 0],
-            duration: 800,
-            delay: delay,
-            easing: 'easeOutQuad'
-          });
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    if (featureRef.current) {
-      observer.observe(featureRef.current);
-    }
-    
-    return () => observer.disconnect();
-  }, [delay]);
-
   return (
-    <div 
-      ref={featureRef} 
-      className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 card-hover opacity-0"
+    <motion.div 
+      ref={ref}
+      className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 card-hover"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.8, delay: delay / 1000, ease: "easeOut" }}
     >
       <div className="h-12 w-12 rounded-lg bg-blue-100 flex items-center justify-center text-medical-primary mb-4">
         {icon}
       </div>
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
       <p className="text-gray-600">{description}</p>
-    </div>
+    </motion.div>
   );
 };
 
 export const Features = () => {
-  const titleRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          anime.default({
-            targets: titleRef.current,
-            opacity: [0, 1],
-            translateY: [30, 0],
-            duration: 900,
-            easing: 'easeOutExpo'
-          });
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    if (titleRef.current) {
-      observer.observe(titleRef.current);
-    }
-    
-    return () => observer.disconnect();
-  }, []);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.1 });
   
   const features = [
     {
@@ -125,12 +84,18 @@ export const Features = () => {
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={titleRef} className="text-center mb-16 opacity-0">
+        <motion.div 
+          ref={ref}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Our Telemedicine Platform</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             We combine cutting-edge technology with exceptional medical expertise to provide you with the best healthcare experience.
           </p>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (

@@ -1,8 +1,7 @@
-import { useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { AlertOctagon, AlertCircle, CheckCircle, Info, ExternalLink, Pill } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import * as anime from 'animejs';
 
 export interface AnalysisResult {
   medications: Medication[];
@@ -30,20 +29,6 @@ interface PrescriptionResultProps {
 }
 
 export const PrescriptionResult = ({ result }: PrescriptionResultProps) => {
-  const resultRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    if (result && resultRef.current) {
-      anime.default({
-        targets: resultRef.current,
-        opacity: [0, 1],
-        translateY: [20, 0],
-        duration: 800,
-        easing: 'easeOutQuad'
-      });
-    }
-  }, [result]);
-
   if (!result) return null;
 
   const getSeverityColor = (severity: string) => {
@@ -73,7 +58,12 @@ export const PrescriptionResult = ({ result }: PrescriptionResultProps) => {
   };
 
   return (
-    <div ref={resultRef} className="bg-white rounded-lg shadow-md p-6 mt-8 opacity-0">
+    <motion.div 
+      className="bg-white rounded-lg shadow-md p-6 mt-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-4">Analysis Results</h2>
         <p className="text-gray-700">{result.summary}</p>
@@ -196,6 +186,6 @@ export const PrescriptionResult = ({ result }: PrescriptionResultProps) => {
         <AlertCircle size={14} className="inline mr-1" />
         This analysis is for informational purposes only and does not constitute medical advice. Always consult with a healthcare professional.
       </div>
-    </div>
+    </motion.div>
   );
 };

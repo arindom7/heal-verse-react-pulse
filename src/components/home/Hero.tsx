@@ -1,28 +1,19 @@
+
 import { ArrowRight, Calendar, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useAnimeEffect } from "@/hooks/useAnimeEffect";
+import { motion } from "framer-motion";
 
 export const Hero = () => {
-  const heroRef = useAnimeEffect<HTMLDivElement>({
-    opacity: [0, 1],
-    translateY: [20, 0],
-    duration: 1200,
-    easing: 'easeOutExpo',
-  });
-
-  const imageRef = useAnimeEffect<HTMLDivElement>({
-    opacity: [0, 1],
-    translateX: [50, 0],
-    duration: 1200,
-    easing: 'easeOutExpo',
-    delay: 300,
-  });
-
   return (
     <section className="pt-28 pb-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div ref={heroRef} className="space-y-8">
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          >
             <div>
               <div className="inline-block py-1 px-3 rounded-full bg-blue-50 text-medical-primary mb-4">
                 <span className="text-sm font-medium flex items-center">
@@ -63,10 +54,12 @@ export const Hero = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div 
-            ref={imageRef} 
+          </motion.div>
+          <motion.div 
             className="hidden lg:block relative"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
           >
             <div className="relative z-10 animate-float">
               <img 
@@ -90,7 +83,7 @@ export const Hero = () => {
             </div>
             <div className="absolute h-80 w-80 bg-blue-100 rounded-full -z-10 -bottom-10 -right-10 opacity-60"></div>
             <div className="absolute h-60 w-60 bg-teal-100 rounded-full -z-10 -top-10 -left-10 opacity-60"></div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

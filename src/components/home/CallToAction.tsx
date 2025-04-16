@@ -1,40 +1,22 @@
-import { useRef, useEffect } from 'react';
+
+import { useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import * as anime from 'animejs';
+import { motion, useInView } from 'framer-motion';
 
 export const CallToAction = () => {
-  const ctaRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.1 });
   
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          anime.default({
-            targets: ctaRef.current,
-            opacity: [0, 1],
-            scale: [0.95, 1],
-            duration: 800,
-            easing: 'easeOutQuad'
-          });
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    if (ctaRef.current) {
-      observer.observe(ctaRef.current);
-    }
-    
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div 
-          ref={ctaRef}
-          className="bg-gradient-to-r from-medical-primary to-medical-secondary rounded-2xl shadow-xl p-8 md:p-12 opacity-0"
+        <motion.div 
+          ref={ref}
+          className="bg-gradient-to-r from-medical-primary to-medical-secondary rounded-2xl shadow-xl p-8 md:p-12"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="text-white">
@@ -59,7 +41,7 @@ export const CallToAction = () => {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
