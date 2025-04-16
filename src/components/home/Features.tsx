@@ -8,7 +8,7 @@ import {
   Award, 
   MessageCircle 
 } from "lucide-react";
-import anime from 'animejs';
+import * as anime from 'animejs';
 
 interface FeatureProps {
   icon: React.ReactNode;
@@ -24,7 +24,7 @@ const Feature = ({ icon, title, description, delay }: FeatureProps) => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          anime({
+          anime.default({
             targets: featureRef.current,
             opacity: [0, 1],
             translateY: [20, 0],
@@ -65,7 +65,7 @@ export const Features = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          anime({
+          anime.default({
             targets: titleRef.current,
             opacity: [0, 1],
             translateY: [30, 0],
