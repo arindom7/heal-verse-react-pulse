@@ -9,7 +9,8 @@ import {
   AlertCircle, 
   Pill, 
   FileText, 
-  Camera
+  Camera,
+  Sparkles
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -41,7 +42,7 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Example: Lisinopril 10mg, Metformin 500mg, Simvastatin 20mg..."
-                className="min-h-[120px]"
+                className="min-h-[150px] resize-none"
               />
             </div>
             <div>
@@ -53,14 +54,29 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
                 placeholder="E.g., Are there any interactions between these medications?"
               />
             </div>
-            <div className="text-xs text-gray-500">
-              <AlertCircle className="inline h-3 w-3 mr-1" /> For accurate analysis, please include medication names, dosage, and frequency if available.
-            </div>
+            <motion.div 
+              className="text-xs text-medical-primary flex items-start p-3 bg-blue-50 rounded-md"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              <Sparkles className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-medium text-sm mb-1">Analysis tips</p>
+                <p>For the most accurate analysis, include:</p>
+                <ul className="list-disc pl-4 mt-1 space-y-1">
+                  <li>Full medication names</li>
+                  <li>Dosage (e.g., 10mg)</li> 
+                  <li>Frequency (e.g., twice daily)</li>
+                  <li>Duration of treatment if known</li>
+                </ul>
+              </div>
+            </motion.div>
           </div>
         );
       case "upload":
         return (
-          <div className="flex flex-col items-center justify-center py-8 border-2 border-dashed border-gray-300 rounded-lg">
+          <div className="flex flex-col items-center justify-center py-10 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
             <Upload className="h-12 w-12 text-gray-400 mb-4" />
             <p className="text-gray-700 font-medium">Upload a photo of your prescription</p>
             <p className="text-sm text-gray-500 mt-1 mb-4">JPG, PNG or PDF up to 10MB</p>
@@ -69,7 +85,7 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
         );
       case "camera":
         return (
-          <div className="flex flex-col items-center justify-center py-8 border-2 border-dashed border-gray-300 rounded-lg">
+          <div className="flex flex-col items-center justify-center py-10 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
             <Camera className="h-12 w-12 text-gray-400 mb-4" />
             <p className="text-gray-700 font-medium">Take a photo of your prescription</p>
             <p className="text-sm text-gray-500 mt-1 mb-4">Position your prescription within the frame</p>
@@ -86,15 +102,19 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
     >
+      <div className="mb-6 flex items-center">
+        <Pill className="h-6 w-6 text-medical-primary mr-2" />
+        <h3 className="text-xl font-semibold">Instant Prescription Analysis</h3>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="flex gap-2 border-b mb-6">
           <button
             type="button"
-            className={`px-4 py-2 ${
+            className={`px-4 py-3 ${
               selectedTab === "text"
                 ? "border-b-2 border-medical-primary text-medical-primary"
-                : "text-gray-500"
-            }`}
+                : "text-gray-500 hover:text-medical-primary"
+            } transition-colors`}
             onClick={() => setSelectedTab("text")}
           >
             <span className="flex items-center">
@@ -104,11 +124,11 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
           </button>
           <button
             type="button"
-            className={`px-4 py-2 ${
+            className={`px-4 py-3 ${
               selectedTab === "upload"
                 ? "border-b-2 border-medical-primary text-medical-primary"
-                : "text-gray-500"
-            }`}
+                : "text-gray-500 hover:text-medical-primary"
+            } transition-colors`}
             onClick={() => setSelectedTab("upload")}
           >
             <span className="flex items-center">
@@ -118,11 +138,11 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
           </button>
           <button
             type="button"
-            className={`px-4 py-2 ${
+            className={`px-4 py-3 ${
               selectedTab === "camera"
                 ? "border-b-2 border-medical-primary text-medical-primary"
-                : "text-gray-500"
-            }`}
+                : "text-gray-500 hover:text-medical-primary"
+            } transition-colors`}
             onClick={() => setSelectedTab("camera")}
           >
             <span className="flex items-center">
@@ -137,11 +157,20 @@ export const PrescriptionAnalysisForm = ({ onSubmit, isLoading }: PrescriptionAn
         <div className="mt-6 flex justify-end">
           <Button 
             type="submit" 
-            className="btn-primary"
+            className="bg-medical-primary hover:bg-medical-primary/90 text-white px-6 py-2.5"
             disabled={!query.trim() || isLoading}
           >
-            <Search className="mr-2 h-4 w-4" />
-            {isLoading ? "Analyzing..." : "Analyze Prescription"}
+            {isLoading ? (
+              <>
+                <div className="h-4 w-4 border-2 border-t-transparent border-white rounded-full animate-spin mr-2"></div>
+                Analyzing...
+              </>
+            ) : (
+              <>
+                <Search className="mr-2 h-4 w-4" />
+                Analyze Prescription
+              </>
+            )}
           </Button>
         </div>
       </form>
