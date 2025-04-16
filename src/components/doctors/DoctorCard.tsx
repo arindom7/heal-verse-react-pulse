@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Star, Clock, ThumbsUp, Award } from "lucide-react";
 import { useAnimeEffect } from "@/hooks/useAnimeEffect";
