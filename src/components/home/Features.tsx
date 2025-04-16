@@ -1,4 +1,3 @@
-
 import { useRef, useEffect } from 'react';
 import { 
   Stethoscope, 
@@ -8,7 +7,9 @@ import {
   Award, 
   MessageCircle 
 } from "lucide-react";
-import anime from 'animejs';
+import * as animeModule from 'animejs';
+
+const anime = animeModule.default || animeModule;
 
 interface FeatureProps {
   icon: React.ReactNode;
