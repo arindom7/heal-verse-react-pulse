@@ -8,7 +8,10 @@ import {
   Award, 
   MessageCircle 
 } from "lucide-react";
-import anime from 'animejs';
+import * as animeModule from 'animejs';
+
+// Get the default function from the module
+const anime = animeModule.default || animeModule;
 
 interface FeatureProps {
   icon: React.ReactNode;

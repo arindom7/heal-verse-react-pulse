@@ -1,6 +1,9 @@
 
 import { useRef, useEffect } from 'react';
-import anime from 'animejs';
+import * as animeModule from 'animejs';
+
+// Get the default function from the module
+const anime = animeModule.default || animeModule;
 
 type AnimeParams = Parameters<typeof anime>[0];
 
