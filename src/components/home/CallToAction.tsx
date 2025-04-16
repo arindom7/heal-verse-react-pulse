@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion';
 
 export const CallToAction = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const isInView = useInView(ref, { once: true });
   
   return (
     <section className="py-20 bg-gray-50">

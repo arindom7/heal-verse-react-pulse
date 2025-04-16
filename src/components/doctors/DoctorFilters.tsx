@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Filter } from "lucide-react";
 import { useAnimeEffect } from "@/hooks/useAnimeEffect";
+import { motion } from 'framer-motion';
 
 interface DoctorFiltersProps {
   onFilterChange: (filters: {
@@ -17,13 +18,7 @@ export const DoctorFilters = ({ onFilterChange }: DoctorFiltersProps) => {
   const [specialty, setSpecialty] = useState("");
   const [availability, setAvailability] = useState("");
 
-  const filterRef = useAnimeEffect<HTMLDivElement>({
-    opacity: [0, 1],
-    translateY: [20, 0],
-    duration: 800,
-    delay: 300,
-    easing: 'easeOutQuad'
-  });
+  const filterRef = useAnimeEffect<HTMLDivElement>();
 
   // List of specialties
   const specialties = [
@@ -63,9 +58,12 @@ export const DoctorFilters = ({ onFilterChange }: DoctorFiltersProps) => {
   }, [search, specialty, availability, onFilterChange]);
 
   return (
-    <div 
+    <motion.div 
       ref={filterRef}
       className="bg-white shadow-md rounded-lg p-6 mb-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
     >
       <div className="flex flex-col md:flex-row gap-4 md:items-end">
         <div className="flex-1">
@@ -124,6 +122,6 @@ export const DoctorFilters = ({ onFilterChange }: DoctorFiltersProps) => {
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

@@ -1,6 +1,5 @@
 
 import { useRef } from 'react';
-import { MotionValue, VariantLabels, AnimationControls } from 'framer-motion';
 
 /**
  * A custom hook to create a ref for use with Framer Motion animations

@@ -19,7 +19,7 @@ interface FeatureProps {
 
 const Feature = ({ icon, title, description, delay }: FeatureProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const isInView = useInView(ref, { once: true });
   
   return (
     <motion.div 
@@ -40,7 +40,7 @@ const Feature = ({ icon, title, description, delay }: FeatureProps) => {
 
 export const Features = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const isInView = useInView(ref, { once: true });
   
   const features = [
     {

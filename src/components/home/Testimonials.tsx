@@ -26,7 +26,7 @@ const testimonials = [
 
 export const Testimonials = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, threshold: 0.1 });
+  const isInView = useInView(sectionRef, { once: true });
   
   return (
     <section ref={sectionRef} className="py-16 bg-white">
