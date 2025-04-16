@@ -1,7 +1,6 @@
-
 import { useRef, useEffect } from 'react';
 import { QuoteIcon } from 'lucide-react';
-import * as anime from 'animejs';
+import anime from 'animejs';
 
 const testimonials = [
   {
@@ -32,7 +31,7 @@ export const Testimonials = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          anime.default({
+          anime({
             targets: sectionRef.current?.querySelector('.section-title'),
             opacity: [0, 1],
             translateY: [30, 0],
@@ -41,7 +40,7 @@ export const Testimonials = () => {
           });
           
           cardsRef.current.forEach((card, index) => {
-            anime.default({
+            anime({
               targets: card,
               opacity: [0, 1],
               translateY: [40, 0],

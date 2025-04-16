@@ -1,8 +1,8 @@
 
 import { useRef, useEffect } from 'react';
-import * as anime from 'animejs';
+import anime from 'animejs';
 
-type AnimeParams = Parameters<typeof anime.default>[0];
+type AnimeParams = Parameters<typeof anime>[0];
 
 export function useAnimeEffect<T extends HTMLElement>(
   animeParams: Omit<AnimeParams, 'targets'>,
@@ -12,7 +12,7 @@ export function useAnimeEffect<T extends HTMLElement>(
 
   useEffect(() => {
     if (elementRef.current) {
-      anime.default({
+      anime({
         targets: elementRef.current,
         ...animeParams,
       });
