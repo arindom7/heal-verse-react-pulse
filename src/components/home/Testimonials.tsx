@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { QuoteIcon } from 'lucide-react';
-import anime from 'animejs';
+import * as anime from 'animejs';
 
 const testimonials = [
   {
