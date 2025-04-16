@@ -1,9 +1,6 @@
 
 import { useRef, useEffect } from 'react';
-import * as animeModule from 'animejs';
-
-// Get the actual function from the module
-const anime = animeModule.default || animeModule;
+import anime from 'animejs'; // Import directly
 
 export const PrescriptionHeader = () => {
   const headerRef = useRef<HTMLDivElement>(null);

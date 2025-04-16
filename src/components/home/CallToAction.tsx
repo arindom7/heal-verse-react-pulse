@@ -2,10 +2,7 @@
 import { useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import * as animeModule from 'animejs';
-
-// Get the actual function from the module
-const anime = animeModule.default || animeModule;
+import anime from 'animejs'; // Import directly
 
 export const CallToAction = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
