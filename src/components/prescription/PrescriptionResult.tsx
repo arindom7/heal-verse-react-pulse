@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { AlertOctagon, AlertCircle, CheckCircle, Info, ExternalLink, Pill } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import anime from 'animejs/lib/anime.es.js';
+import anime from 'animejs';
 
 export interface AnalysisResult {
   medications: Medication[];
