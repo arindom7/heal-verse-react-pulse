@@ -1,5 +1,5 @@
 
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { 
   Stethoscope, 
   FileSearch, 
@@ -8,7 +8,8 @@ import {
   Award, 
   MessageCircle,
   Pill,
-  AlertCircle
+  AlertCircle,
+  ArrowRight  // Added this import
 } from "lucide-react";
 import { motion, useInView } from 'framer-motion';
 import { Link } from "react-router-dom";
