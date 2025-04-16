@@ -28,7 +28,7 @@ export const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <span className="text-medical-primary font-bold text-2xl">
-                Heal<span className="text-medical-secondary">Verse</span>
+                Helio<span className="text-medical-secondary">fy</span>
               </span>
             </Link>
           </div>

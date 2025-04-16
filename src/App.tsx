@@ -19,8 +19,8 @@ const App = () => (
         <Toaster />
         <Sonner />
         <Helmet 
-          titleTemplate="%s | HealVerse" 
-          defaultTitle="HealVerse - Healthcare at Your Fingertips" 
+          titleTemplate="%s | Heliofy" 
+          defaultTitle="Heliofy - Healthcare at Your Fingertips" 
         />
         <BrowserRouter>
           <Routes>
@@ -36,4 +36,3 @@ const App = () => (
 );
 
 export default App;
-

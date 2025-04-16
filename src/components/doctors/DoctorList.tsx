@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Mock doctor data
+// Expanded mock doctor data
 const mockDoctors: Doctor[] = [
   {
     id: "1",
@@ -83,6 +83,84 @@ const mockDoctors: Doctor[] = [
     bio: "Dr. Thompson is an orthopedic surgeon specializing in sports medicine and joint replacement surgery, with extensive experience in treating musculoskeletal conditions.",
     verified: true,
     price: "160"
+  },
+  {
+    id: "7",
+    name: "Dr. Amanda Lee",
+    specialty: "Family Medicine",
+    image: "https://randomuser.me/api/portraits/women/33.jpg",
+    rating: 4.9,
+    reviewCount: 178,
+    experience: "11 years",
+    availability: "Available Today",
+    bio: "Dr. Lee provides comprehensive primary care for patients of all ages. She focuses on preventive medicine and managing chronic conditions for the whole family.",
+    verified: true,
+    price: "95"
+  },
+  {
+    id: "8",
+    name: "Dr. David Miller",
+    specialty: "Endocrinology",
+    image: "https://randomuser.me/api/portraits/men/55.jpg",
+    rating: 4.7,
+    reviewCount: 89,
+    experience: "14 years",
+    availability: "Next 3 Days",
+    bio: "Dr. Miller specializes in diagnosing and treating hormone-related disorders, including diabetes, thyroid issues, and metabolic conditions.",
+    verified: false,
+    price: "140"
+  },
+  {
+    id: "9",
+    name: "Dr. Jennifer Taylor",
+    specialty: "Obstetrics & Gynecology",
+    image: "https://randomuser.me/api/portraits/women/17.jpg",
+    rating: 4.8,
+    reviewCount: 145,
+    experience: "13 years",
+    availability: "Available Now",
+    bio: "Dr. Taylor provides compassionate and comprehensive women's healthcare, from routine gynecological exams to pregnancy care and menopause management.",
+    verified: true,
+    price: "135"
+  },
+  {
+    id: "10",
+    name: "Dr. Richard Brown",
+    specialty: "Gastroenterology",
+    image: "https://randomuser.me/api/portraits/men/91.jpg",
+    rating: 4.9,
+    reviewCount: 132,
+    experience: "16 years",
+    availability: "This Week",
+    bio: "Dr. Brown is a gastroenterologist who diagnoses and treats conditions affecting the digestive system, including the esophagus, stomach, intestines, liver, and pancreas.",
+    verified: true,
+    price: "155"
+  },
+  {
+    id: "11",
+    name: "Dr. Susan Wright",
+    specialty: "Ophthalmology",
+    image: "https://randomuser.me/api/portraits/women/83.jpg",
+    rating: 4.8,
+    reviewCount: 117,
+    experience: "18 years",
+    availability: "Available Today",
+    bio: "Dr. Wright specializes in eye care, from routine exams to complex surgical procedures. She provides comprehensive treatment for various eye conditions.",
+    verified: true,
+    price: "145"
+  },
+  {
+    id: "12",
+    name: "Dr. Thomas Garcia",
+    specialty: "Pulmonology",
+    image: "https://randomuser.me/api/portraits/men/22.jpg",
+    rating: 4.7,
+    reviewCount: 104,
+    experience: "12 years",
+    availability: "Next 3 Days",
+    bio: "Dr. Garcia specializes in diagnosing and treating conditions affecting the lungs and respiratory system, including asthma, COPD, and sleep apnea.",
+    verified: false,
+    price: "130"
   }
 ];
 

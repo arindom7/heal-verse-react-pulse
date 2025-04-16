@@ -25,7 +25,7 @@ const Doctors = () => {
   return (
     <>
       <Helmet>
-        <title>Find a Doctor - HealVerse</title>
+        <title>Find a Doctor - Heliofy</title>
         <meta name="description" content="Connect with board-certified specialists who provide personalized care through secure video consultations." />
       </Helmet>
       

@@ -1,4 +1,3 @@
-
 import { ArrowRight, FileSearch, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -34,28 +33,11 @@ export const Hero = () => {
                   Analyze Prescription <FileSearch className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="font-medium text-base">
-                Find a Doctor <ArrowRight className="ml-2 h-5 w-5" />
+              <Button size="lg" variant="outline" className="font-medium text-base" asChild>
+                <Link to="/doctors">
+                  Find a Doctor <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
-            </div>
-            <div className="pt-4">
-              <div className="flex items-center">
-                <div className="flex -space-x-2 mr-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="h-10 w-10 rounded-full border-2 border-white overflow-hidden">
-                      <img 
-                        src={`https://randomuser.me/api/portraits/men/${20 + i}.jpg`} 
-                        alt={`User ${i}`} 
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <div className="font-semibold">2,000+ Patients</div>
-                  <div className="text-sm text-gray-500">Using our prescription analysis</div>
-                </div>
-              </div>
             </div>
           </motion.div>
           <motion.div 
