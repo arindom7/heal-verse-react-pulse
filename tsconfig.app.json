@@ -24,7 +24,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+
+    /* Add type definitions */
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["animejs", "d3-array", "d3-color", "d3-time", "d3-timer", "estree", "prop-types"]
   },
   "include": ["src"]
 }
