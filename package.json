@@ -85,5 +85,18 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
-  }
+  },
+  "description": "**URL**: https://lovable.dev/projects/a20a8ca4-aab6-4254-a69c-bd7325a552f2",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arindom7/heal-verse-react-pulse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arindom7/heal-verse-react-pulse/issues"
+  },
+  "homepage": "https://github.com/arindom7/heal-verse-react-pulse#readme"
 }
