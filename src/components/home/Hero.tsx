@@ -1,4 +1,4 @@
-import { ArrowRight, FileSearch, CheckCircle } from "lucide-react";
+import { ArrowRight, FileSearch, CheckCircle, Mail, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -36,6 +36,16 @@ export const Hero = () => {
               <Button size="lg" variant="outline" className="font-medium text-base" asChild>
                 <Link to="/doctors">
                   Find a Doctor <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="font-medium text-base" asChild>
+                <Link to="/contact">
+                  Contact Us <Mail className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="font-medium text-base" asChild>
+                <Link to="/about">
+                  About Us <Users className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>

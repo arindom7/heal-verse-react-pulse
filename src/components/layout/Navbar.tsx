@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -12,12 +11,12 @@ export const Navbar = () => {
     { name: "Home", href: "/" },
     { name: "Doctors", href: "/doctors" },
     { name: "Prescription Analysis", href: "/prescription-analysis" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
@@ -32,7 +31,7 @@ export const Navbar = () => {
               </span>
             </Link>
           </div>
-          
+
           <div className="hidden md:ml-6 md:flex md:space-x-8 md:items-center">
             {links.map((link) => (
               <Link
@@ -43,9 +42,11 @@ export const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Button className="ml-4 btn-primary">Sign In</Button>
+            <Link to="/sign-up">
+              <Button className="ml-4 btn-primary">Sign In</Button>
+            </Link>
           </div>
-          
+
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -72,7 +73,9 @@ export const Navbar = () => {
               </Link>
             ))}
             <div className="px-3 py-2">
-              <Button className="w-full btn-primary">Sign In</Button>
+              <Link to="/sign-up">
+                <Button className="w-full btn-primary">Sign In</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -80,3 +83,4 @@ export const Navbar = () => {
     </motion.nav>
   );
 };
+
